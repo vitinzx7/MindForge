@@ -108,7 +108,8 @@ class Program
 
     static void menu3()
     {
-        System.Console.WriteLine("Notion");
+        Console.Clear();
+        System.Console.WriteLine("-Notion-");
         System.Console.WriteLine("1- Adcionar notas Nota\n2- Notas Passadas");
         string? resuln = Console.ReadLine();
         int.TryParse(resuln, out int write);
@@ -117,13 +118,18 @@ class Program
             System.Console.WriteLine("Notion\nColoque uma Nota...");
             string? nota = Console.ReadLine()!;
             resnotas.Add(nota);
+            File.AppendAllText("notas.txt", nota + "\n");
         } else if (write == 2)
         {
             Console.Clear();
             System.Console.WriteLine("--notas passadas--");
-            foreach (var resnotas2 in resnotas)
+            string[] linhas = File.ReadAllLines("notas.txt");
+            foreach (string resul2 in linhas)
             {
-            System.Console.WriteLine(resnotas2);
+                
+                System.Console.WriteLine(resul2);
+                return;
+                
             }
 
         }
