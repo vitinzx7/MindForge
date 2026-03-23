@@ -17,7 +17,7 @@ class Program
     System.Console.WriteLine("Menu MindForge");
     System.Console.WriteLine("1- Materias de estudo");
     System.Console.WriteLine("2- Sessão Pomodoro");
-    System.Console.WriteLine("3- To-do");
+    System.Console.WriteLine("3- Notion");
     System.Console.WriteLine("4- Roadmap");
     System.Console.WriteLine("5- Sair do Ambiente");
     string? escolha = Console.ReadLine()!;
@@ -29,8 +29,11 @@ class Program
             menu1();
             break;
             case 2:
+            Console.Clear();
+            menu2();
             break;
             case 3:
+            menu3();
             break;
             case 4:
             break;
@@ -79,7 +82,52 @@ class Program
     }
     static void menu2()
     {
-        
+        System.Console.WriteLine("Pomodoro");
+        System.Console.WriteLine("1- Iniciar Timer\n 2- Sair");
+        string? escolha1 = Console.ReadLine();
+        int.TryParse(escolha1, out int escolha2);
+            if (escolha2 == 1)
+        {
+            for (var timer = 1500 ;timer > 0; timer--)
+        {   
+            int seg = timer;
+          int min = 60;
+          int tempo = seg / min;
+          int segundos = seg % min;
+            Thread.Sleep(100);
+            Console.Clear();
+           System.Console.Write($"-{tempo}:{segundos:D2}");
+        }
+        } else 
+        {
+            return;
+        }
+    }
+      static List<string> resnotas = new List<string>(); 
+
+
+    static void menu3()
+    {
+        System.Console.WriteLine("Notion");
+        System.Console.WriteLine("1- Adcionar notas Nota\n2- Notas Passadas");
+        string? resuln = Console.ReadLine();
+        int.TryParse(resuln, out int write);
+        if (write == 1)
+        {
+            System.Console.WriteLine("Notion\nColoque uma Nota...");
+            string? nota = Console.ReadLine()!;
+            resnotas.Add(nota);
+        } else if (write == 2)
+        {
+            Console.Clear();
+            System.Console.WriteLine("--notas passadas--");
+            foreach (var resnotas2 in resnotas)
+            {
+            System.Console.WriteLine(resnotas2);
+            }
+
+        }
+
     }
     
 }
