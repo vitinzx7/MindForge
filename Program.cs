@@ -14,6 +14,7 @@ class Program
     }
     static void Menu()
 {
+    Console.Clear();
     System.Console.WriteLine("Menu MindForge");
     System.Console.WriteLine("1- Materias de estudo");
     System.Console.WriteLine("2- Sessão Pomodoro");
@@ -48,9 +49,13 @@ class Program
     
     static void menu1()
     {
-        System.Console.WriteLine("Escolha seu Modelo de Estudo");
+        bool gradee = true;
+        while (gradee)
+        {
+            System.Console.WriteLine("Escolha seu Modelo de Estudo");
         System.Console.WriteLine("1- Grades Curriculares");
         System.Console.WriteLine("2- Passivo / Ativo");
+        System.Console.WriteLine("3- Sair");
         string? menug = Console.ReadLine()!;
         int.TryParse(menug, out int menug1);
         switch (menug1)
@@ -78,12 +83,22 @@ class Program
                     }
                     Console.ReadKey();
             break;
+            case 2:
+            break;
+            case 3:
+                gradee = false;
+            break;
         }
+        }
+        
     }
     static void menu2()
     {
-        System.Console.WriteLine("Pomodoro");
-        System.Console.WriteLine("1- Iniciar Timer\n 2- Sair");
+        bool pomodoro = true;
+        while (pomodoro)
+        {
+                 System.Console.WriteLine("Pomodoro");
+        System.Console.WriteLine("1- Iniciar Pomodoro\n 2- Timer\n3- Sair");
         string? escolha1 = Console.ReadLine();
         int.TryParse(escolha1, out int escolha2);
             if (escolha2 == 1)
@@ -94,27 +109,51 @@ class Program
           int min = 60;
           int tempo = seg / min;
           int segundos = seg % min;
-            Thread.Sleep(100);
+            Thread.Sleep(1000);
             Console.Clear();
            System.Console.Write($"-{tempo}:{segundos:D2}");
+
+             if (Console.KeyAvailable)
+                {
+                    break;
+                }
         }
-        } else 
+        } else if(escolha2 == 2)
         {
-            return;
+            for (var segundos = 0 ;segundos <  9999; segundos--)
+            {
+            Thread.Sleep(1000);
+            Console.Clear();
+            System.Console.WriteLine($"{segundos}");
+            if (Console.KeyAvailable)
+                {
+                    break;
+                }
+                }
+        } else
+            {
+                pomodoro = false;
+            }  
         }
     }
-      static List<string> resnotas = new List<string>(); 
+      static List<string> resnotas = new List<string>();
 
 
     static void menu3()
     {
         Console.Clear();
+
+        bool menution = true;
+        while (menution)
+        {
+            
         System.Console.WriteLine("-Notion-");
-        System.Console.WriteLine("1- Adcionar notas Nota\n2- Notas Passadas");
+        System.Console.WriteLine("1- Adcionar notas Nota\n2- Notas Passadas\n3- Sair");
         string? resuln = Console.ReadLine();
         int.TryParse(resuln, out int write);
-        if (write == 1)
+            if (write == 1)
         {
+            Console.Clear();
             System.Console.WriteLine("Notion\nColoque uma Nota...");
             string? nota = Console.ReadLine()!;
             resnotas.Add(nota);
@@ -128,11 +167,21 @@ class Program
             {
                 
                 System.Console.WriteLine(resul2);
-                return;
                 
+                
+                
+                
+            } Console.ReadKey();
+
+        } else
+            {
+                menution = false;
             }
+        
 
         }
+    
+        
 
     }
     
